@@ -92,17 +92,27 @@ void testApp::draw(){
         
 		if(str.length() > 0){
             
+            // 스트링 비교 되네!!! 
+            if (str.compare("야") ==0) {
+                cout<<"야 이다!"<<endl;
+            }
+            else if (str.compare("ㅇㅇ") ==0) {
+                cout<<"ㅇㅇ 이다!"<<endl;
+            }
+            
             const char *c = str.c_str();
             
             if(c[0] == '\n'){
                 cout<< "sentence set with return key" << endl;
                 testSentence.setSentence(curr_str);
                 sentences.addSetence(curr_str);
+                curr_str="";
                 for (int i = 0; i < sentences.getSentenceCount(); i++) {
                     cout << sentences.getSentence(i) << endl;
                 }
             }
             else{
+                
                 curr_str = str;
             }
             

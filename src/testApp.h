@@ -1,11 +1,17 @@
 #pragma once
 
+
 #include "ofMain.h"
 #include "ofxFontStash.h"
 #include "ofxNetwork.h"
+#include "ofxOsc.h"
 #include "ofxSyphon.h"
 #include "ACSentence.h"
 #include "ACSentenceManager.h"
+
+
+#define PORT 12345
+#define NUM_MSG_STRINGS 20
 
 //comment this line to ignore "ofxTimeMeasurements" calls
 //enabling it requires the ofxTimeMeasurements addon
@@ -52,4 +58,8 @@ class testApp : public ofBaseApp{
     
         ACSentence testSentence;
         ACSentenceManager sentences;
+    
+        ofxOscReceiver receiver;
+    int mouseX, mouseY;
+    string mouseButtonState;
 };

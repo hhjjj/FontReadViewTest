@@ -4,6 +4,8 @@
 #include "ofxFontStash.h"
 #include "ofxNetwork.h"
 #include "ofxSyphon.h"
+#include "ACSentence.h"
+#include "ACSentenceManager.h"
 
 //comment this line to ignore "ofxTimeMeasurements" calls
 //enabling it requires the ofxTimeMeasurements addon
@@ -43,7 +45,11 @@ class testApp : public ofBaseApp{
         ofxFontStash unicodeFont;
         vector <string> msgLines;
         vector <string> storeText;
-    vector <string> oneWords;
-	ofxSyphonServer mainOutputSyphonServer;
-
+    
+        vector <string> oneWords;
+        ofxSyphonServer mainOutputSyphonServer;
+        string curr_str;
+    
+        ACSentence testSentence;
+        ACSentenceManager sentences;
 };

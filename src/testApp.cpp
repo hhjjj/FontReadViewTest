@@ -1,7 +1,5 @@
 #include "testApp.h"
 
-#include "testApp.h"
-string ohstr;
 //--------------------------------------------------------------
 void testApp::setup(){
     
@@ -9,6 +7,8 @@ void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofBackground(22, 22, 22, 255);
+    
+    
     ofSetWindowTitle("ofxSyphon Example");
     
 	mainOutputSyphonServer.setName("Screen Output");
@@ -46,7 +46,7 @@ void testApp::setup(){
 	TCP.setup(11999);
 	//optionally set the delimiter to something else.  The delimter in the client and the server have to be the same, default being [/TCP]
 	TCP.setMessageDelimiter("\t");
-    ohstr ="";
+    curr_str ="";
     
 }
 
@@ -63,7 +63,6 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
-    string temp;
     //for each connected client lets get the data being sent and lets print it to the screen
 	for(unsigned int i = 0; i < (unsigned int)TCP.getLastID(); i++){
         
@@ -92,17 +91,21 @@ void testApp::draw(){
 		string str = TCP.receive(i);
         
 		if(str.length() > 0){
-            ohstr = str;
-//            if (ohstr.length()>3) {
-            const char * c = ohstr.c_str();
-                if(c[0] == '\n'){
-                oneWords.clear();
+            
+            const char *c = str.c_str();
+            
+            if(c[0] == '\n'){
+                cout<< "sentence set with return key" << endl;
+                testSentence.setSentence(curr_str);
+                sentences.addSetence(curr_str);
+                for (int i = 0; i < sentences.getSentenceCount(); i++) {
+                    cout << sentences.getSentence(i) << endl;
                 }
-//            }
-                else{
-                    oneWords.push_back(str);
-                }
-            temp = str;
+            }
+            else{
+                curr_str = str;
+            }
+            
 			storeText[i] = str;
 		}
         
@@ -114,11 +117,18 @@ void testApp::draw(){
     
 //    ofRotateY(40);
     
-	    
+    float fontSize = 28;
     
-    ofRectangle wbox = unicodeFont.getBBox(ohstr, 28, 0, 0);
+    ofRectangle wbox = unicodeFont.getBBox(testSentence.getSentence(), fontSize, 0, 0);
     ofSetColor(255);
-    unicodeFont.draw(ohstr, 28, 100, 100);
+    unicodeFont.draw(curr_str, fontSize, 100, 100);
+    unicodeFont.draw(testSentence.getSentence(), fontSize, 100, 100+fontSize);
+    unicodeFont.draw(ofToString(testSentence.getWordsCount()), fontSize, 40, 100+fontSize);
+
+    
+    for (int i = 0; i < testSentence.getWordsCount(); i++) {
+        unicodeFont.draw(testSentence.getWords()[i], fontSize, 100, 100+fontSize*(i+2));
+    }
 
     mainOutputSyphonServer.publishScreen();
 

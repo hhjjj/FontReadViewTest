@@ -22,7 +22,7 @@ void testApp::setup(){
     
     receiver.setup(PORT);
     
-    ofSetWindowTitle("ofxSyphon Example");
+    ofSetWindowTitle("ANTICLIMAX");
     
 	mainOutputSyphonServer.setName("Screen Output");
     
@@ -67,7 +67,7 @@ void testApp::setup(){
     icoSphere.setMode( OF_PRIMITIVE_TRIANGLES );
 //    vector<ofMeshFace> triangles = icoSphere.getMesh().getUniqueFaces();
 //    icoSphere.getMesh().setFromTriangles(triangles,true);
-    
+
     cam1ViewPort = ofRectangle(192, 64, 640, 640);
     
     cam1.setFov(60);
@@ -188,30 +188,80 @@ void testApp::draw(){
     icoSphere.drawWireframe();
     // draw face normals
 //    icoSphere.drawNormals(10,true);
-    
     // draw normal
+    ofSetColor(255, 255, 0);
     icoSphere.drawNormals(10);
 
-    icoSphere.drawAxes(icoSphere.getRadius() + 30);
+//    icoSphere.drawAxes(icoSphere.getRadius() + 30);
+    
+//    ofSetColor(0, 0, 255);
+//    ofDrawBox(0, 0, 0, 20);
     
     
     
+    
+    
+    // drawing some rectangles
+    ofSetColor(255,0,0);
+    for (int i = 0; i < icoSphere.getMesh().getVertices().size(); i++) {
+        
+        ofMatrix4x4 m;
+        m.makeRotationMatrix(ofVec3f(0,0,1), icoSphere.getMesh().getNormal(i));
+        
+        ofPushMatrix();
+        ofTranslate(ofPoint(icoSphere.getMesh().getVertex(i).x,icoSphere.getMesh().getVertex(i).y,icoSphere.getMesh().getVertex(i).z));
+        ofMultMatrix(m);
+        ofRect(-3, -3, 6, 6);
+        ofPopMatrix();
+        
+    }
+
     
     
     
     // ofxStash Font draw with  glCullFace(GL_FRONT) and glScalef(1,-1,1);
-
     
-    ofSetColor(0, 0, 255);
-    ofDrawBox(0, 0, 0, 20);
     glCullFace(GL_FRONT);
-    ofSetColor(255);
+
+    ofRectangle boundingBox = unicodeFont.getBBox("홀리", 200, 0, 0);
+    ofSetColor(255,0,0);
     ofPushMatrix();
+    ofScale(0.05, 0.05);
+    ofTranslate(-boundingBox.getWidth()/2.0, -boundingBox.getHeight()/2.0);
     glScalef(1,-1,1);
-    unicodeFont.draw("안녕?", 100, 0, 0);
+    unicodeFont.draw("홀리", 200, 0, 0);
 //    trueFont.drawString("Hello", 0, 0);
     ofPopMatrix();
 
+    ofSetColor(255,255,0);
+    for (int i = 0; i < icoSphere.getMesh().getVertices().size(); i++) {
+        
+    
+    
+        ofRectangle ddBox = unicodeFont.getBBox("ㅋ", 200, 0, 0);
+        ofMatrix4x4 m;
+        m.makeRotationMatrix(ofVec3f(0,0,1), icoSphere.getMesh().getNormal(i));
+
+        ofPushMatrix();
+        ofTranslate(ofPoint(icoSphere.getMesh().getVertex(i).x*1.01,icoSphere.getMesh().getVertex(i).y*1.01,icoSphere.getMesh().getVertex(i).z*1.01));
+        ofMultMatrix(m);
+
+        
+        ofScale(0.05, 0.05);
+            
+        ofTranslate(-ddBox.getWidth()/2.0, -ddBox.getHeight()/2.0);
+        glScalef(1,-1,1);
+        unicodeFont.draw("ㅋ", 200, 0, 0);
+        ofPopMatrix();
+
+    }
+    
+    
+    
+    //glDisable(GL_CULL_FACE);
+   
+    
+    
 //    ofSetColor(0, 255, 0);
 //    ofDrawBox(0, 50, 0, 50);
 
@@ -219,23 +269,22 @@ void testApp::draw(){
 
     cam1.end();
 
-
-    
     
     ofSetColor(255);
+    
+    //let's create noraml OF Drawing Environment from below:
     ofDisableLighting();
-    
-    
     ofDisableDepthTest();
 
-   
     // OF 는 보통은 CW
     // 이 밑으로는 모두 CW winding
-    glCullFace(GL_FRONT);
-    
     // OF 에서는 glCullFace를 안쓸 수 있다.
     // 이땐 밑에 주석을 풀고 보통 처럼 그려라.
-//    glDisable(GL_CULL_FACE);
+    glDisable(GL_CULL_FACE);
+    
+    
+   
+
 
     ofPushStyle();
     ofSetColor(255, 0, 0);
@@ -243,10 +292,10 @@ void testApp::draw(){
 //    ofFill();
     ofRect(cam1ViewPort);
     
-    ofSetColor(255, 0, 255);
-    ofFill();
-    //    ofFill();
-    ofRect(0,0,100,100);
+//    ofSetColor(255, 0, 255);
+//    ofFill();
+//    //    ofFill();
+//    ofRect(0,0,100,100);
     
     ofPopStyle();
     
@@ -323,13 +372,13 @@ void testApp::draw(){
         ofSetColor(255,255,255,255);
     float fontSize = 28;
     ofFill();
-    unicodeFont.draw("Hello", fontSize, 40, 40);
+    //unicodeFont.draw("Hello", fontSize, 40, 40);
 
     ofRectangle wbox = unicodeFont.getBBox(testSentence.getSentence(), fontSize, 0, 0);
 
     unicodeFont.draw(curr_str, fontSize, 100, 100);
     unicodeFont.draw(testSentence.getSentence(), fontSize, 100, 100+fontSize);
-    unicodeFont.draw(ofToString(testSentence.getWordsCount()), fontSize, 40, 100+fontSize);
+    //unicodeFont.draw(ofToString(testSentence.getWordsCount()), fontSize, 40, 100+fontSize);
 
     
     for (int i = 0; i < testSentence.getWordsCount(); i++) {

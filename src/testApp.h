@@ -67,7 +67,9 @@ class testApp : public ofBaseApp{
     
         ofMaterial material;
         ofLight cam1Light;
-        ofCamera cam1;
+//        ofCamera cam1;
+    ofEasyCam cam1;
+
         ofRectangle cam1ViewPort;
         ofIcoSpherePrimitive icoSphere;
 

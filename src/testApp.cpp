@@ -2,8 +2,10 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    
-    
+    //glFrontFace(GL_CCW);
+    //glFrontFace(GL_CW);
+    ofEnableDepthTest();
+
     
     if( XML.loadFile("mySettings.xml") ){
         // will return false when xml file is empty
@@ -60,8 +62,9 @@ void testApp::setup(){
     curr_str ="";
     
     material.setDiffuseColor(ofFloatColor(255,0,0));
-    
-    icoSphere.setRadius(80);
+    //material.setEmissiveColor(ofFloatColor(255,0,0));
+    icoSphere.setRadius(50);
+    icoSphere.setMode( OF_PRIMITIVE_TRIANGLES );
     vector<ofMeshFace> triangles = icoSphere.getMesh().getUniqueFaces();
     icoSphere.getMesh().setFromTriangles(triangles,true);
     
@@ -69,9 +72,10 @@ void testApp::setup(){
     
     cam1.setFov(60);
     cam1.setPosition(0, 0, 190);
-    cam1Light.setPosition(0, 0, 300);
+    cam1Light.setPosition(0, 0, 190);
     cam1Light.enable();
     
+
     
 }
 
@@ -139,30 +143,90 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    
-    cam1.begin(cam1ViewPort);
-    ofEnableDepthTest();
+    ofBackground(0);
+
     // 카메라에서 보이는 쪽만 그려라 ( winding 방향이 제대로 되어 있어야 한다.)
     glEnable(GL_CULL_FACE);
+
     ofEnableLighting();
+    
+    cam1.begin(cam1ViewPort);
+
+    //OF는 카메라 안에서는 CCW
+    
 //    material.begin();
 
+
+
+    
+    //glCullFace(GL_FRONT); // for testing
+    //glCullFace(GL_BACK); // for testing
+
+    //draw the Back
+//    glCullFace(GL_FRONT);
+    
+    
+    //draw the front
+    glCullFace(GL_BACK);
+    
+    /* I commented this from ofMesh.cpp */
+    
+    //	// tig: flip face(=triangle) winding order, so that we are consistent with all other ofPrimitives.
+    //	// i wish there was a more elegant way to do this, but anything happening before "split vertices"
+    //	// makes things very, very complicated.
+    //
+    //	for (int i = 0; i < (int)faces.size(); i+=3) {
+    //		std::swap(faces[i+1], faces[i+2]);
+    //	}
+    
     ofFill();
     ofSetColor(255,0,0);
     icoSphere.draw();
+
+    ofSetColor(255, 255, 0);
+    icoSphere.drawWireframe();
+    icoSphere.drawNormals(10,true);
+
+    //icoSphere.drawAxes(icoSphere.getRadius() + 30);
     
+    
+    
+    ofSetColor(0, 0, 255);
+    ofDrawBox(0, 0, 0, 20);
+
+    ofSetColor(0, 255, 0);
+    ofDrawBox(0, 50, 0, 50);
+
 //    material.end();
-    glDisable(GL_CULL_FACE);
-    ofDisableLighting();
-    ofDisableDepthTest();
+
+    cam1.end();
+
 
     
-    cam1.end();
     
+    ofSetColor(255);
+    ofDisableLighting();
+    
+   
+    // OF 는 보통은 CW
+    // 이 밑으로는 모두 CW winding
+    glCullFace(GL_FRONT);
+    
+    // OF 에서는 glCullFace를 안쓸 수 있다.
+    // 이땐 밑에 주석을 풀고 보통 처럼 그려라.
+//    glDisable(GL_CULL_FACE);
+
     ofPushStyle();
     ofSetColor(255, 0, 0);
     ofNoFill();
+//    ofFill();
     ofRect(cam1ViewPort);
+    
+    ofSetColor(255, 0, 255);
+    ofFill();
+    //    ofFill();
+    ofRect(0,0,100,100);
+    
     ofPopStyle();
     
     //for each connected client lets get the data being sent and lets print it to the screen
@@ -267,7 +331,11 @@ void testApp::keyPressed(int key){
         XML.saveFile("mySettings.xml");
         cout<< "settings saved to xml!" << endl;
     }
-
+//    if(key == '1') {
+//        ofEnableDepthTest();
+//    } else if(key == '2') {
+//        ofDisableDepthTest();
+//    }
 }
 
 //--------------------------------------------------------------

@@ -49,6 +49,8 @@ class testApp : public ofBaseApp{
 
         ofxFontStash font;
         ofxFontStash unicodeFont;
+    
+    ofTrueTypeFont trueFont;
         vector <string> msgLines;
         vector <string> storeText;
     
@@ -72,5 +74,7 @@ class testApp : public ofBaseApp{
 
         ofRectangle cam1ViewPort;
         ofIcoSpherePrimitive icoSphere;
+    
+    
 
 };

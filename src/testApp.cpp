@@ -4,7 +4,7 @@
 void testApp::setup(){
     //glFrontFace(GL_CCW);
     //glFrontFace(GL_CW);
-    ofEnableDepthTest();
+//    ofEnableDepthTest();
 
     
     if( XML.loadFile("mySettings.xml") ){
@@ -29,7 +29,7 @@ void testApp::setup(){
 	font.setup("Vera.ttf"); //load verdana font, set lineHeight to be 130%
 	unicodeFont.setup("Arial Unicode.ttf"); //load verdana font, set lineHeight to be 130%
     
-    
+    trueFont.loadFont("Vera.ttf", 100);
     // this is our buffer to stroe the text data
     ofBuffer buffer = ofBufferFromFile("message.txt");
     
@@ -65,8 +65,8 @@ void testApp::setup(){
     //material.setEmissiveColor(ofFloatColor(255,0,0));
     icoSphere.setRadius(50);
     icoSphere.setMode( OF_PRIMITIVE_TRIANGLES );
-    vector<ofMeshFace> triangles = icoSphere.getMesh().getUniqueFaces();
-    icoSphere.getMesh().setFromTriangles(triangles,true);
+//    vector<ofMeshFace> triangles = icoSphere.getMesh().getUniqueFaces();
+//    icoSphere.getMesh().setFromTriangles(triangles,true);
     
     cam1ViewPort = ofRectangle(192, 64, 640, 640);
     
@@ -143,7 +143,8 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofBackground(0);
+    ofBackground(0,255);
+    ofEnableDepthTest();
 
     // 카메라에서 보이는 쪽만 그려라 ( winding 방향이 제대로 되어 있어야 한다.)
     glEnable(GL_CULL_FACE);
@@ -181,21 +182,38 @@ void testApp::draw(){
     
     ofFill();
     ofSetColor(255,0,0);
-    icoSphere.draw();
+    //icoSphere.draw();
 
     ofSetColor(255, 255, 0);
     icoSphere.drawWireframe();
-    icoSphere.drawNormals(10,true);
+    // draw face normals
+//    icoSphere.drawNormals(10,true);
+    
+    // draw normal
+    icoSphere.drawNormals(10);
 
-    //icoSphere.drawAxes(icoSphere.getRadius() + 30);
+    icoSphere.drawAxes(icoSphere.getRadius() + 30);
     
     
+    
+    
+    
+    
+    // ofxStash Font draw with  glCullFace(GL_FRONT) and glScalef(1,-1,1);
+
     
     ofSetColor(0, 0, 255);
     ofDrawBox(0, 0, 0, 20);
+    glCullFace(GL_FRONT);
+    ofSetColor(255);
+    ofPushMatrix();
+    glScalef(1,-1,1);
+    unicodeFont.draw("안녕?", 100, 0, 0);
+//    trueFont.drawString("Hello", 0, 0);
+    ofPopMatrix();
 
-    ofSetColor(0, 255, 0);
-    ofDrawBox(0, 50, 0, 50);
+//    ofSetColor(0, 255, 0);
+//    ofDrawBox(0, 50, 0, 50);
 
 //    material.end();
 
@@ -207,6 +225,9 @@ void testApp::draw(){
     ofSetColor(255);
     ofDisableLighting();
     
+    
+    ofDisableDepthTest();
+
    
     // OF 는 보통은 CW
     // 이 밑으로는 모두 CW winding
@@ -299,11 +320,13 @@ void testApp::draw(){
 	}
     
 //    ofRotateY(40);
-    
+        ofSetColor(255,255,255,255);
     float fontSize = 28;
-    
+    ofFill();
+    unicodeFont.draw("Hello", fontSize, 40, 40);
+
     ofRectangle wbox = unicodeFont.getBBox(testSentence.getSentence(), fontSize, 0, 0);
-    ofSetColor(255);
+
     unicodeFont.draw(curr_str, fontSize, 100, 100);
     unicodeFont.draw(testSentence.getSentence(), fontSize, 100, 100+fontSize);
     unicodeFont.draw(ofToString(testSentence.getWordsCount()), fontSize, 40, 100+fontSize);

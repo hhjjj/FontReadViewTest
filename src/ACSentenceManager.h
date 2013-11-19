@@ -19,10 +19,17 @@ public:
     ~ACSentenceManager();
 
     void addSetence(string str);
+    
+    int getWordCount();
     int getSentenceCount();
+    
+    string getWord(int index);
     string getSentence(int index);
+    
+    vector<string> getAllSentences();
+    vector<string> getAllWords();
 
 private:
     vector<ACSentence> sentences;
-
+    vector<string> wordsInAllSentences;
 };

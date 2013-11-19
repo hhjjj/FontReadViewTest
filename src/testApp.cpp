@@ -3,6 +3,16 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     
+    
+    
+    if( XML.loadFile("mySettings.xml") ){
+        // will return false when xml file is empty
+		cout<< "mySettings.xml loaded!" << endl;
+	}else{
+		cout<< "unable to load mySettings.xml check data/ folder" << endl;
+	}
+    
+    
 	ofEnableAlphaBlending();
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
@@ -160,8 +170,13 @@ void testApp::draw(){
                 testSentence.setSentence(curr_str);
                 sentences.addSetence(curr_str);
                 curr_str="";
+                
                 for (int i = 0; i < sentences.getSentenceCount(); i++) {
                     cout << sentences.getSentence(i) << endl;
+                }
+                
+                for (int i = 0; i < sentences.getWordCount(); i++) {
+                    cout << sentences.getWord(i) << endl;
                 }
             }
             else{
@@ -206,7 +221,12 @@ void testApp::drawPoint(float x, float y){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    
+    //no data gets saved unless you hit the s key
+    if(key == 's'){
+        XML.saveFile("mySettings.xml");
+        cout<< "settings saved to xml!" << endl;
+    }
+
 }
 
 //--------------------------------------------------------------

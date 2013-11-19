@@ -8,7 +8,7 @@
 #include "ofxSyphon.h"
 #include "ACSentence.h"
 #include "ACSentenceManager.h"
-
+#include "ofxXmlSettings.h"
 
 #define PORT 12345
 #define NUM_MSG_STRINGS 20
@@ -60,6 +60,9 @@ class testApp : public ofBaseApp{
         ACSentenceManager sentences;
     
         ofxOscReceiver receiver;
-    int mouseX, mouseY;
-    string mouseButtonState;
+        int mouseX, mouseY;
+        string mouseButtonState;
+        
+        ofxXmlSettings XML;
+
 };

@@ -56,6 +56,10 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		F10CC933183B14000020A73B /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10CC92C183B14000020A73B /* tinyxml.cpp */; };
+		F10CC934183B14000020A73B /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10CC92E183B14000020A73B /* tinyxmlerror.cpp */; };
+		F10CC935183B14000020A73B /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10CC92F183B14000020A73B /* tinyxmlparser.cpp */; };
+		F10CC936183B14000020A73B /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10CC931183B14000020A73B /* ofxXmlSettings.cpp */; };
 		F19A86761838BE6600F0022F /* ofxTCPClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F19A866E1838BE6600F0022F /* ofxTCPClient.cpp */; };
 		F19A86771838BE6600F0022F /* ofxTCPManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F19A86701838BE6600F0022F /* ofxTCPManager.cpp */; };
 		F19A86781838BE6600F0022F /* ofxTCPServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F19A86721838BE6600F0022F /* ofxTCPServer.cpp */; };
@@ -190,6 +194,13 @@
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E8BFFBD7382B36DC6B6B876E /* utf8.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = utf8.h; path = ../../../addons/ofxUnicode/libs/utf8cpp/include/utf8.h; sourceTree = SOURCE_ROOT; };
+		F10CC92C183B14000020A73B /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
+		F10CC92D183B14000020A73B /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
+		F10CC92E183B14000020A73B /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
+		F10CC92F183B14000020A73B /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
+		F10CC931183B14000020A73B /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
+		F10CC932183B14000020A73B /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		F10CC937183B19A60020A73B /* FontReadViewTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FontReadViewTest.entitlements; sourceTree = "<group>"; };
 		F19A866A1838BE6600F0022F /* Instructions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Instructions.txt; sourceTree = "<group>"; };
 		F19A866C1838BE6600F0022F /* ofxNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNetwork.h; sourceTree = "<group>"; };
 		F19A866D1838BE6600F0022F /* ofxNetworkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxNetworkUtils.h; sourceTree = "<group>"; };
@@ -498,6 +509,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				F10CC92A183B14000020A73B /* ofxXmlSettings */,
 				677DCD9B183A91B800B3943A /* ofxOsc */,
 				670A9BBE183A6D72005F1457 /* ofxSyphon */,
 				F19A86681838BE6600F0022F /* ofxNetwork */,
@@ -575,6 +587,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				F10CC937183B19A60020A73B /* FontReadViewTest.entitlements */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
@@ -641,6 +654,36 @@
 			name = src;
 			sourceTree = "<group>";
 		};
+		F10CC92A183B14000020A73B /* ofxXmlSettings */ = {
+			isa = PBXGroup;
+			children = (
+				F10CC92B183B14000020A73B /* libs */,
+				F10CC930183B14000020A73B /* src */,
+			);
+			name = ofxXmlSettings;
+			path = ../../../addons/ofxXmlSettings;
+			sourceTree = "<group>";
+		};
+		F10CC92B183B14000020A73B /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				F10CC92C183B14000020A73B /* tinyxml.cpp */,
+				F10CC92D183B14000020A73B /* tinyxml.h */,
+				F10CC92E183B14000020A73B /* tinyxmlerror.cpp */,
+				F10CC92F183B14000020A73B /* tinyxmlparser.cpp */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		F10CC930183B14000020A73B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				F10CC931183B14000020A73B /* ofxXmlSettings.cpp */,
+				F10CC932183B14000020A73B /* ofxXmlSettings.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		F19A86681838BE6600F0022F /* ofxNetwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,6 +748,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					E4B69B5A0A3A1756003C02F2 = {
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "FontReadViewTest" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -775,7 +827,9 @@
 				AD7CCE180C5BEF646A1B62E1 /* ofUTF8.cpp in Sources */,
 				F19A86761838BE6600F0022F /* ofxTCPClient.cpp in Sources */,
 				F19A86781838BE6600F0022F /* ofxTCPServer.cpp in Sources */,
+				F10CC936183B14000020A73B /* ofxXmlSettings.cpp in Sources */,
 				670A9BD2183A6D72005F1457 /* SyphonNameboundClient.m in Sources */,
+				F10CC933183B14000020A73B /* tinyxml.cpp in Sources */,
 				670A9BD3183A6D72005F1457 /* ofxSyphonClient.mm in Sources */,
 				670A9BD4183A6D72005F1457 /* ofxSyphonServer.mm in Sources */,
 				670A9BD5183A6D72005F1457 /* ofxSyphonServerDirectory.mm in Sources */,
@@ -790,11 +844,13 @@
 				677DCDCB183A91B800B3943A /* OscOutboundPacketStream.cpp in Sources */,
 				677DCDCC183A91B800B3943A /* OscPrintReceivedElements.cpp in Sources */,
 				677DCDCD183A91B800B3943A /* OscReceivedElements.cpp in Sources */,
+				F10CC935183B14000020A73B /* tinyxmlparser.cpp in Sources */,
 				677DCDCE183A91B800B3943A /* OscTypes.cpp in Sources */,
 				677DCDCF183A91B800B3943A /* ofxOscBundle.cpp in Sources */,
 				677DCDD0183A91B800B3943A /* ofxOscMessage.cpp in Sources */,
 				677DCDD1183A91B800B3943A /* ofxOscParameterSync.cpp in Sources */,
 				677DCDD2183A91B800B3943A /* ofxOscReceiver.cpp in Sources */,
+				F10CC934183B14000020A73B /* tinyxmlerror.cpp in Sources */,
 				677DCDD3183A91B800B3943A /* ofxOscSender.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -853,7 +909,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -901,13 +957,14 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 		E4B69B600A3A1757003C02F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1014,7 +1071,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1022,6 +1079,7 @@
 		E4B69B610A3A1757003C02F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1127,7 +1185,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

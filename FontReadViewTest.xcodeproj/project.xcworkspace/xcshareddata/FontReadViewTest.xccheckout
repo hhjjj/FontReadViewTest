@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EAAE818F-9599-4174-A4BD-B2EE28792202</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FontReadViewTest</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D2590D4C-9274-4774-84B7-8507DA93224D</key>
+		<string>https://github.com/hhjjj/FontReadViewTest.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>FontReadViewTest.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D2590D4C-9274-4774-84B7-8507DA93224D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hhjjj/FontReadViewTest.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D2590D4C-9274-4774-84B7-8507DA93224D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D2590D4C-9274-4774-84B7-8507DA93224D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FontReadViewTest</string>
+		</dict>
+	</array>
+</dict>
+</plist>

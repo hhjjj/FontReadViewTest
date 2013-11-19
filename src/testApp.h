@@ -64,5 +64,11 @@ class testApp : public ofBaseApp{
         string mouseButtonState;
         
         ofxXmlSettings XML;
+    
+        ofMaterial material;
+        ofLight cam1Light;
+        ofCamera cam1;
+        ofRectangle cam1ViewPort;
+        ofIcoSpherePrimitive icoSphere;
 
 };

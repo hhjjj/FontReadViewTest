@@ -59,6 +59,20 @@ void testApp::setup(){
 	TCP.setMessageDelimiter("\t");
     curr_str ="";
     
+    material.setDiffuseColor(ofFloatColor(255,0,0));
+    
+    icoSphere.setRadius(80);
+    vector<ofMeshFace> triangles = icoSphere.getMesh().getUniqueFaces();
+    icoSphere.getMesh().setFromTriangles(triangles,true);
+    
+    cam1ViewPort = ofRectangle(192, 64, 640, 640);
+    
+    cam1.setFov(60);
+    cam1.setPosition(0, 0, 190);
+    cam1Light.setPosition(0, 0, 300);
+    cam1Light.enable();
+    
+    
 }
 
 void testApp::update(){
@@ -126,6 +140,31 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     
+    cam1.begin(cam1ViewPort);
+    ofEnableDepthTest();
+    // 카메라에서 보이는 쪽만 그려라 ( winding 방향이 제대로 되어 있어야 한다.)
+    glEnable(GL_CULL_FACE);
+    ofEnableLighting();
+//    material.begin();
+
+    ofFill();
+    ofSetColor(255,0,0);
+    icoSphere.draw();
+    
+//    material.end();
+    glDisable(GL_CULL_FACE);
+    ofDisableLighting();
+    ofDisableDepthTest();
+
+    
+    cam1.end();
+    
+    ofPushStyle();
+    ofSetColor(255, 0, 0);
+    ofNoFill();
+    ofRect(cam1ViewPort);
+    ofPopStyle();
+    
     //for each connected client lets get the data being sent and lets print it to the screen
 	for(unsigned int i = 0; i < (unsigned int)TCP.getLastID(); i++){
         
@@ -165,6 +204,8 @@ void testApp::draw(){
             
             const char *c = str.c_str();
             
+            // Cocoa 에서 TCP 로 데이터가 오면 순서가 뒤집히는거 같다.
+            // 그래서 제일 처음에 '\n'이 오는걸 체크해야한다.
             if(c[0] == '\n'){
                 cout<< "sentence set with return key" << endl;
                 testSentence.setSentence(curr_str);

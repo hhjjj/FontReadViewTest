@@ -56,6 +56,7 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		F1089DCB1842B40F00C5918A /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1089DCA1842B40600C5918A /* icon.icns */; };
 		F10CC933183B14000020A73B /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10CC92C183B14000020A73B /* tinyxml.cpp */; };
 		F10CC934183B14000020A73B /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10CC92E183B14000020A73B /* tinyxmlerror.cpp */; };
 		F10CC935183B14000020A73B /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10CC92F183B14000020A73B /* tinyxmlparser.cpp */; };
@@ -92,6 +93,7 @@
 			files = (
 				BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */,
 				670A9BD6183A6D7F005F1457 /* Syphon.framework in CopyFiles */,
+				F1089DCB1842B40F00C5918A /* icon.icns in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +196,7 @@
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
 		E8BFFBD7382B36DC6B6B876E /* utf8.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = utf8.h; path = ../../../addons/ofxUnicode/libs/utf8cpp/include/utf8.h; sourceTree = SOURCE_ROOT; };
+		F1089DCA1842B40600C5918A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		F10CC92C183B14000020A73B /* tinyxml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxml.cpp; sourceTree = "<group>"; };
 		F10CC92D183B14000020A73B /* tinyxml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyxml.h; sourceTree = "<group>"; };
 		F10CC92E183B14000020A73B /* tinyxmlerror.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlerror.cpp; sourceTree = "<group>"; };
@@ -587,6 +590,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				F1089DCA1842B40600C5918A /* icon.icns */,
 				F10CC937183B19A60020A73B /* FontReadViewTest.entitlements */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,

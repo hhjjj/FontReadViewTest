@@ -326,37 +326,55 @@ void testApp::draw(){
 		//we only want to update the text we have recieved there is data
 		string str = TCP.receive(i);
         
-		if(str.length() > 0){
+        // check userID
+        size_t startpos1 = str.find_first_not_of("/user1/");
+        if (string::npos != startpos1) {
+            // for user1
+            str = str.substr(startpos1);
             
-            // 스트링 비교 되네!!! 
-            if (str.compare("야") ==0) {
-                cout<<"야 이다!"<<endl;
-            }
-            else if (str.compare("ㅇㅇ") ==0) {
-                cout<<"ㅇㅇ 이다!"<<endl;
-            }
-            
-            const char *c = str.c_str();
-            
-            // Cocoa 에서 TCP 로 데이터가 오면 순서가 뒤집히는거 같다.
-            // 그래서 제일 처음에 '\n'이 오는걸 체크해야한다.
-            if(c[0] == '\n'){
-                cout<< "sentence set with return key" << endl;
-                testSentence.setSentence(curr_str);
-                sentences.addSetence(curr_str);
-                curr_str="";
+            if(str.length() > 0){
                 
-                for (int i = 0; i < sentences.getSentenceCount(); i++) {
-                    cout << sentences.getSentence(i) << endl;
+                // 스트링 비교 되네!!!
+                if (str.compare("야") ==0) {
+                    cout<<"야 이다!"<<endl;
+                }
+                else if (str.compare("ㅇㅇ") ==0) {
+                    cout<<"ㅇㅇ 이다!"<<endl;
                 }
                 
-                for (int i = 0; i < sentences.getWordCount(); i++) {
-                    cout << sentences.getWord(i) << endl;
+                
+                
+                
+                const char *c = str.c_str();
+                
+                
+                
+                // Cocoa 에서 TCP 로 데이터가 오면 순서가 뒤집히는거 같다.
+                // 그래서 제일 처음에 '\n'이 오는걸 체크해야한다.
+                if(c[0] == '\n'){
+                    cout<< "sentence set with return key" << endl;
+                    testSentence.setSentence(curr_str);
+                    sentences.addSetence(curr_str);
+                    curr_str="";
+                    
+                    for (int i = 0; i < sentences.getSentenceCount(); i++) {
+                        cout << sentences.getSentence(i) << endl;
+                    }
+                    
+                    for (int i = 0; i < sentences.getWordCount(); i++) {
+                        cout << sentences.getWord(i) << endl;
+                    }
+                }
+                else{
+                    
+                    curr_str = str;
                 }
             }
-            else{
-                
-                curr_str = str;
+            
+            size_t startpos2 = str.find_first_not_of("/user2/");
+            if (string::npos != startpos2) {
+                // for user2
+                str = str.substr(startpos2);
             }
             
 			storeText[i] = str;

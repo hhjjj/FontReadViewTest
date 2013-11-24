@@ -14,7 +14,7 @@
 		670A9BD3183A6D72005F1457 /* ofxSyphonClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 670A9BCC183A6D72005F1457 /* ofxSyphonClient.mm */; };
 		670A9BD4183A6D72005F1457 /* ofxSyphonServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 670A9BCE183A6D72005F1457 /* ofxSyphonServer.mm */; };
 		670A9BD5183A6D72005F1457 /* ofxSyphonServerDirectory.mm in Sources */ = {isa = PBXBuildFile; fileRef = 670A9BD0183A6D72005F1457 /* ofxSyphonServerDirectory.mm */; };
-		670A9BD6183A6D7F005F1457 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 670A9BC4183A6D72005F1457 /* Syphon.framework */; };
+		670A9BD6183A6D7F005F1457 /* Syphon.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = 670A9BC4183A6D72005F1457 /* Syphon.framework */; };
 		670A9BD9183A6E07005F1457 /* ACSentence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 670A9BD7183A6E07005F1457 /* ACSentence.cpp */; };
 		670A9BDD183A7F4D005F1457 /* ACUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 670A9BDB183A7F4D005F1457 /* ACUtil.cpp */; };
 		670A9BE0183A8606005F1457 /* ACSentenceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 670A9BDE183A8606005F1457 /* ACSentenceManager.cpp */; };
@@ -36,7 +36,7 @@
 		801397981E78A4CBDE809376 /* fontstash.c in Sources */ = {isa = PBXBuildFile; fileRef = D5AE78144E3980BD0B4445D7 /* fontstash.c */; };
 		AD7CCE180C5BEF646A1B62E1 /* ofUTF8.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45FD7CA9F83C2CD563A7A5F4 /* ofUTF8.cpp */; };
 		B0F2688D773B5C8FB13237F8 /* ofTextConverter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8BF1B7E7C1C21FE45AB73E04 /* ofTextConverter.cpp */; };
-		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		BBAB23CB13894F3D00AA2426 /* GLUT.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -56,7 +56,7 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
-		F1089DCB1842B40F00C5918A /* icon.icns in CopyFiles */ = {isa = PBXBuildFile; fileRef = F1089DCA1842B40600C5918A /* icon.icns */; };
+		F1089DCB1842B40F00C5918A /* icon.icns in Copy Files */ = {isa = PBXBuildFile; fileRef = F1089DCA1842B40600C5918A /* icon.icns */; };
 		F10CC933183B14000020A73B /* tinyxml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10CC92C183B14000020A73B /* tinyxml.cpp */; };
 		F10CC934183B14000020A73B /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10CC92E183B14000020A73B /* tinyxmlerror.cpp */; };
 		F10CC935183B14000020A73B /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F10CC92F183B14000020A73B /* tinyxmlparser.cpp */; };
@@ -85,16 +85,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E4C2427710CC5ABF004149E2 /* CopyFiles */ = {
+		E4C2427710CC5ABF004149E2 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */,
-				670A9BD6183A6D7F005F1457 /* Syphon.framework in CopyFiles */,
-				F1089DCB1842B40F00C5918A /* icon.icns in CopyFiles */,
+				BBAB23CB13894F3D00AA2426 /* GLUT.framework in Copy Files */,
+				670A9BD6183A6D7F005F1457 /* Syphon.framework in Copy Files */,
+				F1089DCB1842B40F00C5918A /* icon.icns in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -215,6 +216,9 @@
 		F19A86731838BE6600F0022F /* ofxTCPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxTCPServer.h; sourceTree = "<group>"; };
 		F19A86741838BE6600F0022F /* ofxUDPManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxUDPManager.cpp; sourceTree = "<group>"; };
 		F19A86751838BE6600F0022F /* ofxUDPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxUDPManager.h; sourceTree = "<group>"; };
+		F1B4C75D1842C02E00574766 /* Arial Unicode.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Arial Unicode.ttf"; path = "bin/data/Arial Unicode.ttf"; sourceTree = "<group>"; };
+		F1B4C75E1842C02E00574766 /* mySettings.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = mySettings.xml; path = bin/data/mySettings.xml; sourceTree = "<group>"; };
+		F1B4C75F1842C02E00574766 /* Vera.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Vera.ttf; path = bin/data/Vera.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -590,7 +594,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				F1089DCA1842B40600C5918A /* icon.icns */,
+				F1B4C75B1842BC9900574766 /* Resources */,
 				F10CC937183B19A60020A73B /* FontReadViewTest.entitlements */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
@@ -723,6 +727,17 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		F1B4C75B1842BC9900574766 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F1B4C75D1842C02E00574766 /* Arial Unicode.ttf */,
+				F1B4C75E1842C02E00574766 /* mySettings.xml */,
+				F1B4C75F1842C02E00574766 /* Vera.ttf */,
+				F1089DCA1842B40600C5918A /* icon.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -733,7 +748,7 @@
 				E4B69B580A3A1756003C02F2 /* Sources */,
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
 				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
-				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+				E4C2427710CC5ABF004149E2 /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -810,7 +825,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\n";
+			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";\nmkdir -p \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -f \"$ICON_FILE\" \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources/\"\ncp -r bin/data \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/Resources\";";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -5,7 +5,8 @@ void testApp::setup(){
     //glFrontFace(GL_CCW);
     //glFrontFace(GL_CW);
 //    ofEnableDepthTest();
-
+    // for archiving in Mac App
+    ofSetDataPathRoot("../Resources/data/");
     
     if( XML.loadFile("mySettings.xml") ){
         // will return false when xml file is empty

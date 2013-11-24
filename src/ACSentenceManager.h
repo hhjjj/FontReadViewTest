@@ -37,6 +37,7 @@ public:
 
 
 private:
+    
     ofxFontStash wordFont;
     float wordFontSize;
     vector<ACSentence> sentences;

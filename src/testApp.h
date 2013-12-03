@@ -75,6 +75,9 @@ class testApp : public ofBaseApp{
         ofRectangle cam1ViewPort;
         ofIcoSpherePrimitive icoSphere;
     
+        ofColor connectionColor;
+    bool bConnectFill;
+    
     
 
 };

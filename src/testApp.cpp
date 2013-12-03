@@ -25,39 +25,39 @@ void testApp::setup(){
     
     ofSetWindowTitle("ANTICLIMAX");
     
-	mainOutputSyphonServer.setName("Screen Output");
+	mainOutputSyphonServer.setName("12345");
     
 	font.setup("Vera.ttf"); //load verdana font, set lineHeight to be 130%
 	unicodeFont.setup("Arial Unicode.ttf"); //load verdana font, set lineHeight to be 130%
     
     trueFont.loadFont("Vera.ttf", 100);
     // this is our buffer to stroe the text data
-    ofBuffer buffer = ofBufferFromFile("message.txt");
-    
-    if(buffer.size()) {
-        
-        // we now keep grabbing the next line
-        // until we reach the end of the file
-        while(buffer.isLastLine() == false) {
-            
-            // move on to the next line
-            string line = buffer.getNextLine();
-            
-            // copy the line to draw later
-            // make sure its not a empty line
-            if(line.empty() == false) {
-                msgLines.push_back(line);
-            }
-            
-            // print out the line
-            cout << line << endl;
-            
-        }
-        
-    }
+//    ofBuffer buffer = ofBufferFromFile("message.txt");
+//    
+//    if(buffer.size()) {
+//        
+//        // we now keep grabbing the next line
+//        // until we reach the end of the file
+//        while(buffer.isLastLine() == false) {
+//            
+//            // move on to the next line
+//            string line = buffer.getNextLine();
+//            
+//            // copy the line to draw later
+//            // make sure its not a empty line
+//            if(line.empty() == false) {
+//                msgLines.push_back(line);
+//            }
+//            
+//            // print out the line
+//            cout << line << endl;
+//            
+//        }
+//        
+//    }
     
     //setup the server to listen on 11999
-	TCP.setup(11999);
+	TCP.setup(12345);
 	//optionally set the delimiter to something else.  The delimter in the client and the server have to be the same, default being [/TCP]
 	TCP.setMessageDelimiter("\t");
     curr_str ="";
@@ -74,10 +74,12 @@ void testApp::setup(){
     cam1.setFov(60);
     cam1.setPosition(0, 0, 190);
     cam1Light.setPosition(0, 0, 190);
+    cam1.setDistance(100);
     cam1Light.enable();
     
 
-    
+    connectionColor = ofColor(255,0,0);
+    bConnectFill = false;
 }
 
 void testApp::update(){
@@ -145,6 +147,12 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
     ofBackground(0,255);
+    
+    
+    /*
+    
+    
+    
     ofEnableDepthTest();
 
     // 카메라에서 보이는 쪽만 그려라 ( winding 방향이 제대로 되어 있어야 한다.)
@@ -171,7 +179,7 @@ void testApp::draw(){
     //draw the front
     glCullFace(GL_BACK);
     
-    /* I commented this from ofMesh.cpp */
+    // I commented this from ofMesh.cpp 
     
     //	// tig: flip face(=triangle) winding order, so that we are consistent with all other ofPrimitives.
     //	// i wish there was a more elegant way to do this, but anything happening before "split vertices"
@@ -285,14 +293,19 @@ void testApp::draw(){
     
     
    
-
+*/
 
     ofPushStyle();
-    ofSetColor(255, 0, 0);
+    ofSetColor(connectionColor);
+    if (bConnectFill) {
+        ofFill();
+    }
+    else{
     ofNoFill();
 //    ofFill();
-    ofRect(cam1ViewPort);
     
+    }
+    ofRect(cam1ViewPort);
 //    ofSetColor(255, 0, 255);
 //    ofFill();
 //    //    ofFill();
@@ -303,7 +316,15 @@ void testApp::draw(){
     //for each connected client lets get the data being sent and lets print it to the screen
 	for(unsigned int i = 0; i < (unsigned int)TCP.getLastID(); i++){
         
-		if( !TCP.isClientConnected(i) )continue;
+        
+        if( !TCP.isClientConnected(i) ) {
+            bConnectFill = false;
+        }
+        
+		if( !TCP.isClientConnected(i) ) {
+            continue;
+        }
+        bConnectFill = true;
         
 		//give each client its own color
 		ofSetColor(255 - i*30, 255 - i * 20, 100 + i*40);
@@ -328,7 +349,7 @@ void testApp::draw(){
 		string str = TCP.receive(i);
         
         // check userID
-        size_t startpos1 = str.find_first_not_of("/user1/");
+        size_t startpos1 = str.find_first_not_of("/user2/");
         if (string::npos != startpos1) {
             // for user1
             str = str.substr(startpos1);
@@ -372,38 +393,53 @@ void testApp::draw(){
                 }
             }
             
-            size_t startpos2 = str.find_first_not_of("/user2/");
-            if (string::npos != startpos2) {
-                // for user2
-                str = str.substr(startpos2);
-            }
+//            size_t startpos2 = str.find_first_not_of("/user2/");
+//            if (string::npos != startpos2) {
+//                // for user2
+//                str = str.substr(startpos2);
+//            }
             
 			storeText[i] = str;
 		}
         
 		//draw the info text and the received text bellow it
-		ofDrawBitmapString(info, xPos, yPos);
-		ofDrawBitmapString(storeText[i], 25, yPos + 20);
+        
+
+//		ofDrawBitmapString(info, xPos, yPos);
+//		ofDrawBitmapString(storeText[i], 25, yPos + 20);
         
 	}
     
 //    ofRotateY(40);
         ofSetColor(255,255,255,255);
-    float fontSize = 28;
+    float fontSize = 80;
     ofFill();
     //unicodeFont.draw("Hello", fontSize, 40, 40);
 
     ofRectangle wbox = unicodeFont.getBBox(testSentence.getSentence(), fontSize, 0, 0);
 
-    unicodeFont.draw(curr_str, fontSize, 100, 100);
-    unicodeFont.draw(testSentence.getSentence(), fontSize, 100, 100+fontSize);
+//    unicodeFont.draw(curr_str, fontSize, 100, 100);
+//    unicodeFont.draw(testSentence.getSentence(), fontSize, 100, 100+fontSize);
     //unicodeFont.draw(ofToString(testSentence.getWordsCount()), fontSize, 40, 100+fontSize);
 
-    
     for (int i = 0; i < testSentence.getWordsCount(); i++) {
-        unicodeFont.draw(testSentence.getWords()[i], fontSize, 100, 100+fontSize*(i+2));
+        ofRectangle wbBox = unicodeFont.getBBox(testSentence.getWords()[i], fontSize, 0, 0);
+        
+        ofSetColor(255, 255, 0);
+        unicodeFont.draw(testSentence.getWords()[i], fontSize, cam1ViewPort.x+ cam1ViewPort.width /2 -  wbBox.width/2, cam1ViewPort.y +fontSize*(i+1));
+        //        ofSetColor(255, 0, 0, 200);
+        //        ofFill();
+        //        ofRect(ofRectangle(cam1ViewPort.x+ cam1ViewPort.width /2 -  wbBox.width/2, cam1ViewPort.y + fontSize*(i+1), wbBox.width, wbBox.height));
     }
 
+
+    ofSetColor(255, 255,255);
+    unicodeFont.drawMultiLineColumn(curr_str, fontSize, cam1ViewPort.x, cam1ViewPort.y + fontSize, cam1ViewPort.width);
+    
+    
+    
+    
+    
     mainOutputSyphonServer.publishScreen();
 
 }
